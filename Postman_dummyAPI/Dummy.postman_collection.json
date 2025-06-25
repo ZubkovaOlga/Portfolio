@@ -25,6 +25,27 @@
 		},
 		{
 			"name": "Создание пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.environment.set(\"user_id\", iD);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -103,6 +124,27 @@
 		},
 		{
 			"name": "Создание постов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.environment.set(\"post_id\", iD);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -206,6 +248,27 @@
 		},
 		{
 			"name": "Создание комментария",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.environment.set(\"comment_id\", iD);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -236,15 +299,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"message\": \"comment\",\r\n    \"owner\": \"67d09daeef9a184b2de6d9c8\",\r\n    \"post\": \"67d09e8def9a186585e6da37\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{Base URL}}/comment/{{comment_id}}",
 					"host": [
@@ -263,15 +317,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"message\": \"comment\",\r\n\"owner\": \"67d09daeef9a184b2de6d9c8\",\r\n\"post\": \"67d09e8def9a186585e6da37\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{Base URL}}/post/{{post_id}}",
 					"host": [
@@ -290,15 +335,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"message\": \"comment\",\r\n\"owner\": \"67d09daeef9a184b2de6d9c8\",\r\n\"post\": \"67d09e8def9a186585e6da37\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{Base URL}}/user/{{user_id}}",
 					"host": [
