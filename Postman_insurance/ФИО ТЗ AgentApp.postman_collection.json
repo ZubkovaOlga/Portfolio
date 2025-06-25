@@ -8,6 +8,21 @@
 	"item": [
 		{
 			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"var tk = jsonData.token\r",
+							"console.log(tk)\r",
+							"pm.collectionVariables.set(\"token\", tk);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -39,7 +54,28 @@
 			"response": []
 		},
 		{
-			"name": "create driver",
+			"name": "создание водителя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.collectionVariables.set(\"driver_id\", iD);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -68,7 +104,28 @@
 			"response": []
 		},
 		{
-			"name": "create owner",
+			"name": "создание собственника",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"\r",
+							"var pr = pm.response.json().person\r",
+							"pm.collectionVariables.set(\"owner_id\", pr);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -98,7 +155,28 @@
 			"response": []
 		},
 		{
-			"name": "create insurant",
+			"name": "создание страхователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"\r",
+							"var pr = pm.response.json().person\r",
+							"pm.collectionVariables.set(\"insurant_id\", pr);\r",
+							"console.log(pr)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -128,7 +206,29 @@
 			"response": []
 		},
 		{
-			"name": "create car",
+			"name": "создание автомобиля",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.collectionVariables.set(\"car_id\", iD);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -158,6 +258,28 @@
 		},
 		{
 			"name": "unification of objects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.collectionVariables.set(\"insured_object_id\", iD);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -186,7 +308,31 @@
 			"response": []
 		},
 		{
-			"name": "create agreement",
+			"name": "создание договора",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData)\r",
+							"console.log(jsonData.id)\r",
+							"\r",
+							"var iD = pm.response.json().id\r",
+							"pm.collectionVariables.set(\"agreement_id\", iD);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -215,13 +361,13 @@
 			"response": []
 		},
 		{
-			"name": "Update agreement",
+			"name": "обновление договора",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"insured_object\": \"0a1f7cd8-566a-4ee9-b7d8-e02f25b1f114\"\r\n\r\n}",
+					"raw": "{\r\n    \"insured_object\": \"{{insured_object_id}}\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -244,19 +390,10 @@
 			"response": []
 		},
 		{
-			"name": "calculation",
+			"name": "расчет",
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{http_schema}}://{{host}}/{{api_version}}/agreements/{{agreement_id}}/results/TEST_COMPANY",
 					"protocol": "{{http_schema}}",
@@ -315,33 +452,31 @@
 	"variable": [
 		{
 			"key": "token",
-			"value": "",
-			"type": "default"
+			"value": ""
 		},
 		{
 			"key": "driver_id",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "owner_id",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "insurant_id",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "car_id",
-			"value": "",
-			"type": "string"
+			"value": ""
+		},
+		{
+			"key": "insured_object_id",
+			"value": ""
 		},
 		{
 			"key": "agreement_id",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
